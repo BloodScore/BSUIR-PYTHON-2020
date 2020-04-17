@@ -1,6 +1,3 @@
-import random
-
-
 class SizeException(BaseException):
     def __init__(self, operation):
         self.info = 'You cannot ' + operation + ' vectors of different sizes!'
@@ -52,45 +49,3 @@ class Vector:
     def __eq__(self, other):
         return (self.dimension == other.dimension) and (self.coordinates == other.coordinates)
 
-
-def main():
-    # n = random.randint(1, 10)
-    n = 5
-    # print(5 is 5)
-    # print(abs(-8))
-
-    temp = [random.randint(-10, 10) for _ in range(n)]
-    n_vector_a = Vector(n, temp)
-
-    n = random.randint(1, 10)
-    temp = [random.randint(-10, 10) for _ in range(n)]
-    n_vector_b = Vector(n, temp)
-
-    print('a: ', n_vector_a)
-    print('b: ', n_vector_b)
-
-    print()
-
-    try:
-        print('a + b: ', n_vector_a + n_vector_b, '\n')
-    except SizeException as se:
-        print(se.info)
-
-    try:
-        print('a - b: ', n_vector_a - n_vector_b, '\n')
-    except SizeException as se:
-        print(se.info)
-
-    try:
-        print('a * b: ', n_vector_a * n_vector_b, '\n')
-    except SizeException as se:
-        print(se.info, '\n')
-
-    print('a == b: ', n_vector_a == n_vector_b, '\n')
-
-    print('b * 5: ', n_vector_b * 5, '\n')
-    print('5 * a: ', 5 * n_vector_a, '\n')
-
-
-if __name__ == '__main__':
-    main()

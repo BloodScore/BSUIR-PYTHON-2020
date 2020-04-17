@@ -52,10 +52,10 @@ def dict_to_json(obj, indent):
     json_string = ''
     k = 1
     flag = False
-    spaces = '\t' * indent
+    spaces = '    ' * indent
 
     if indent != 0:
-        bracket_spaces = '\t' * (indent - 1)
+        bracket_spaces = '    ' * (indent - 1)
         json_string += '{\n'
         for i in obj:
             if str(type(obj[i])) == '<class \'str\'>' or str(type(i)) == '<class \'str\'>':
@@ -96,10 +96,10 @@ def dict_to_json(obj, indent):
 def arr_to_json(obj, indent):
     json_string = ''
     k = 1
-    spaces = '\t' * indent
+    spaces = '    ' * indent
 
     if indent != 0:
-        bracket_spaces = '\t' * (indent - 1)
+        bracket_spaces = '    ' * (indent - 1)
         json_string += '[\n'
         for i in obj:
             if k < len(obj):
@@ -123,11 +123,11 @@ def arr_to_json(obj, indent):
 
 def set_to_json(obj, indent):
     json_string = ''
-    spaces = '\t' * indent
+    spaces = '    ' * indent
     k = 1
 
     if indent != 0:
-        bracket_spaces = '\t' * (indent - 1)
+        bracket_spaces = '    ' * (indent - 1)
         json_string += '{\n'
         for i in obj:
             if k < len(obj):
@@ -167,32 +167,3 @@ def bool_to_json(obj):
 def none_to_json():
     return 'null'
 
-
-class JustTestClass:
-    def __init__(self):
-        self.name = 'Alex'
-        self.nickname = '007'
-
-
-def main():
-    # python_object = {None: 'a', 'key': 'b', 3: 'c'}
-    python_object = (1, [2, 3, {'b': ['a', 'd']}], 4)
-    # python_object = {'a': [38], 'b': [2, 3, {8: 9}], 4: False}
-    # python_object = 'uxi'
-    # python_object = 3.1
-    # python_object = False
-    # python_object = None
-    # python_object = JustTestClass()
-    # python_object = [1, (2, 'a')]
-    # python_object = {'a': [1, {2, 'a', False}, (3, 4, 't')], 2: 'b', 3: 'c'}
-    # python_object = ['qw', [2, None, 4, {True: 'a', 6: ['b', JustTestClass()]}]]
-    # python_object = [1, 2, 3, 4, 5]
-    # python_object = {1, "23a", False, None, 4.5}
-
-    # with open('output.txt', 'w') as out:
-    #     print(python_object_to_json(python_object, 1), file=out)
-    print(python_object_to_json(python_object, 1))
-
-
-if __name__ == '__main__':
-    main()

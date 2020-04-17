@@ -24,3 +24,4 @@ def test_sort(input_file):
             sorted_list.append(int(line))
 
     assert unsorted_list == sorted_list
+

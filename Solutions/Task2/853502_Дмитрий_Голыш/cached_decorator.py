@@ -1,25 +1,22 @@
-import random
-
-
 def cached(func):
-    value = 0
-    prev_args = []
-    same_args = False
+    prev_args = {}
 
-    def wrapper(*args):
-        print(f'Summing {args} ...')
-        nonlocal value, prev_args, same_args
+    def wrapper(*args, **kwargs):
+        print(f'Summing {*args, *kwargs.values()} ...')
+        nonlocal prev_args
 
-        if prev_args == args:
-            print('Already counted!')
-            same_args = True
-        else:
-            same_args = False
-            value = func(*args)
+        temp_list = list(args)
+        for value in kwargs.values():
+            temp_list.append(value)
+        args = tuple(sorted(temp_list))
+
+        if args not in prev_args.keys():
+            prev_args.setdefault(args, func(*args))
             print('Completed!')
-            prev_args = args[:]
+        else:
+            print('Already counted!')
 
-        return value, same_args
+        return prev_args[args]
 
     return wrapper
 
@@ -33,19 +30,3 @@ def sum_func(*args):
 
     return s
 
-
-def main():
-    print(sum_func()[0], '\n')
-
-    print(sum_func(1, 2, 3)[0], '\n')
-    print(sum_func(1, 2, 3)[0], '\n')
-
-    print(sum_func(2)[0], '\n')
-    print(sum_func(2, 3)[0], '\n')
-
-    print(sum_func(2, 3)[0], '\n')
-    print(sum_func(3, 2)[0], '\n')
-
-
-if __name__ == '__main__':
-    main()
