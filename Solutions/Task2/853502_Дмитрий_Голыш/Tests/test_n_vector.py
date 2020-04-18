@@ -13,7 +13,8 @@ def create_vector():
 
 def test_sum(create_vector):
     assert create_vector[0] + create_vector[1] == Vector(3, [5, 7, 9])
-    assert create_vector[0] + create_vector[2] == SizeException('summarize')
+    with pytest.raises(SizeException):
+        create_vector[0] + create_vector[2]
 
 
 def test_len(create_vector):
@@ -26,7 +27,8 @@ def test_abs(create_vector):
 
 def test_subs(create_vector):
     assert create_vector[0] - create_vector[1] == Vector(3, [-3, -3, -3])
-    assert create_vector[0] - create_vector[2] == SizeException('subtract')
+    with pytest.raises(SizeException):
+        create_vector[0] + create_vector[2]
 
 
 def test_mul(create_vector):
@@ -35,7 +37,8 @@ def test_mul(create_vector):
 
 def test_scal_mul(create_vector):
     assert create_vector[0] * create_vector[1] == 32
-    assert create_vector[0] * create_vector[2] == SizeException('multiply')
+    with pytest.raises(SizeException):
+        create_vector[0] + create_vector[2]
 
 
 def test_equal(create_vector):
