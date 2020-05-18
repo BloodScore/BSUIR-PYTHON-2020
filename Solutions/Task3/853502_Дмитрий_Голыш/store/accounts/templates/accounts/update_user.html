@@ -1,0 +1,49 @@
+{% extends 'accounts/index.html' %}
+
+{% block content %}
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Update</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="{% url 'home' %}">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="{% url 'profile' %}">Profile<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="{% url 'update' %}">Update</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="login_form_inner">
+        <form autocomplete="off" class="row login_form" action="" method="POST" id="contactForm" novalidate="novalidate">
+            {% csrf_token %}
+            <div class="col-md-12 form-group">
+                <h5>Username</h5>
+                {{ form.username }}
+            </div>
+            <div class="col-md-12 form-group">
+                <h5>Email</h5>
+                {{ form.email }}
+            </div>
+            <div class="col-md-12 form-group">
+                <h5>First name</h5>
+                {{ form.first_name }}
+            </div>
+            <div class="col-md-12 form-group">
+                <h5>Last name</h5>
+                {{ form.last_name }}
+            </div>
+            <div class="col-md-12 form-group">
+                <h5>Birth date</h5>
+                {{ form.birth_date }}
+            </div>
+            <div class="col-md-12 form-group">
+                <button type="submit" value="submit" class="primary-btn">Save</button>
+            </div>
+            {{ form.errors }}
+        </form>
+    </div>
+
+{% endblock %}

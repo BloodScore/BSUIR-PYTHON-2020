@@ -1,0 +1,97 @@
+{% extends 'accounts/index.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- Start Banner Area -->
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Shopping Cart</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="{% url 'home' %}">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="{% url 'cart' %}">Cart</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Banner Area -->
+
+    <!--================Cart Area =================-->
+    <section class="cart_area">
+        <div class="container">
+            <div class="cart_inner">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Product</th>
+                                <th scope="col">Price</th>
+<!--                                <th scope="col">Quantity</th>-->
+<!--                                <th scope="col">Total</th>-->
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in order.get_cart_items %}
+                            <tr>
+                                <td>
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img src="{{ item.product.image.url }}" height="140px" width="140px" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <p>{{ item.product.name }}</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5>{{ item.product.price }}</h5>
+                                </td>
+<!--                                <td>-->
+<!--                                    <div class="product_count">-->
+<!--                                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"-->
+<!--                                            class="input-text qty">-->
+<!--                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"-->
+<!--                                            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>-->
+<!--                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value&#45;&#45;;return false;"-->
+<!--                                            class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>-->
+<!--                                    </div>-->
+<!--                                </td>-->
+<!--                                <td>-->
+<!--                                    <h5>{{ order.get_cart_total }}</h5>-->
+<!--                                </td>-->
+                            </tr>
+                        {% endfor %}
+
+
+
+                            <tr class="out_button_area">
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+
+                                <td>
+                                    <div class="checkout_btn_inner d-flex align-items-center">
+                                        <h5 style="margin-right: 20px;">Total: {{ order.get_cart_total }}</h5>
+                                        <a class="gray_btn" href="{% url 'shop' %}">Continue Shopping</a>
+                                        <a class="primary-btn" href="#">Proceed to checkout</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Cart Area =================-->
+
+{% endblock %}

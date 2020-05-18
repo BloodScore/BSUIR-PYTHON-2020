@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for i in items %}
+        <img src="{{ i.image.url }}">
+    {% endfor %}
+</body>
+</html>

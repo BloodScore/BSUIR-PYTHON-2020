@@ -1,0 +1,47 @@
+{% extends 'accounts/index.html' %}
+
+{% block content %}
+     <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Profile</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="{% url 'home' %}">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="{% url 'profile' %}">Profile</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="login_form_inner">
+        <form autocomplete="off" class="row login_form" action="" method="GET" id="contactForm" novalidate="novalidate">
+
+            <div class="col-md-12 form-group">
+                <h5>Username</h5>
+                {{ form.username }}
+            </div>
+            <div class="col-md-12 form-group">
+                <h5>Email</h5>
+                {{ form.email }}
+            </div>
+            <div class="col-md-12 form-group">
+                <h5>First name</h5>
+                {{ form.first_name }}
+            </div>
+            <div class="col-md-12 form-group">
+                <h5>Last name</h5>
+                {{ form.last_name }}
+            </div>
+            <div class="col-md-12 form-group">
+                <h5>Birth date</h5>
+                {{ form.birth_date }}
+            </div>
+            <button type="button" style="background-color: green; border: none; border-radius: 3px; height: 30px; margin-left: 15px; width: 177px;"><a href="{% url 'update' %}" style="color: white">Update</a></button>
+            <button type="button" style="background-color: red; border: none; border-radius: 3px; width: 178px;"><a href="{% url 'delete' %}" style="color: white">Delete profile</a></button>
+        </form>
+    </div>
+
+{% endblock %}
